@@ -9,7 +9,7 @@ interface RouteParams {
 }
 
 // GET single card
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   await dbConnect();
   try {
     const card = await Card.findById(params.id);
@@ -46,7 +46,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
 }
 
 // DELETE card
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   await dbConnect();
   try {
     const card = await Card.findByIdAndDelete(params.id);

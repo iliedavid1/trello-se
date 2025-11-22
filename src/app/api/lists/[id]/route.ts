@@ -29,7 +29,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
 }
 
 // DELETE list (and its cards)
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   await dbConnect();
   try {
     // Delete all cards in this list first

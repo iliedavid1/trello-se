@@ -8,7 +8,7 @@ interface RouteParams {
   };
 }
 
-export async function GET(request: Request, { params }: RouteParams) {
+export async function GET(_request: Request, { params }: RouteParams) {
   await dbConnect();
   try {
     const board = await Board.findById(params.id);
@@ -16,7 +16,7 @@ export async function GET(request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: 'Board not found' }, { status: 404 });
     }
     return NextResponse.json(board);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to fetch board' }, { status: 500 });
   }
 }
@@ -34,12 +34,12 @@ export async function PUT(request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: 'Board not found' }, { status: 404 });
     }
     return NextResponse.json(board);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to update board' }, { status: 500 });
   }
 }
 
-export async function DELETE(request: Request, { params }: RouteParams) {
+export async function DELETE(_request: Request, { params }: RouteParams) {
   await dbConnect();
   try {
     const board = await Board.findByIdAndDelete(params.id);
@@ -47,7 +47,7 @@ export async function DELETE(request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: 'Board not found' }, { status: 404 });
     }
     return NextResponse.json({ message: 'Board deleted successfully' });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to delete board' }, { status: 500 });
   }
 }
