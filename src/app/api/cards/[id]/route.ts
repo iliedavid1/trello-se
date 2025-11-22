@@ -18,6 +18,7 @@ export async function GET(_request: Request, { params }: RouteParams) {
     }
     return NextResponse.json(card);
   } catch (error) {
+    console.error('GET /api/cards/[id] failed', error);
     return NextResponse.json({ error: 'Failed to fetch card' }, { status: 500 });
   }
 }
@@ -41,6 +42,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
     }
     return NextResponse.json(card);
   } catch (error) {
+    console.error('PUT /api/cards/[id] failed', error);
     return NextResponse.json({ error: 'Failed to update card' }, { status: 500 });
   }
 }
@@ -55,6 +57,7 @@ export async function DELETE(_request: Request, { params }: RouteParams) {
     }
     return NextResponse.json({ message: 'Card deleted successfully' });
   } catch (error) {
+    console.error('DELETE /api/cards/[id] failed', error);
     return NextResponse.json({ error: 'Failed to delete card' }, { status: 500 });
   }
 }

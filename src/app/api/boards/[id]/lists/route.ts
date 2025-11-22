@@ -16,7 +16,8 @@ export async function GET(_request: Request, { params }: RouteParams) {
       .populate('cards')
       .sort({ createdAt: 1 });
     return NextResponse.json(lists);
-  } catch (_error) {
+  } catch (error) {
+    console.error('GET /api/boards/[id]/lists failed', error);
     return NextResponse.json({ error: 'Failed to fetch lists' }, { status: 500 });
   }
 }
@@ -31,7 +32,8 @@ export async function POST(request: Request, { params }: RouteParams) {
       boardId: params.id,
     });
     return NextResponse.json(list, { status: 201 });
-  } catch (_error) {
+  } catch (error) {
+    console.error('POST /api/boards/[id]/lists failed', error);
     return NextResponse.json({ error: 'Failed to create list' }, { status: 500 });
   }
 }

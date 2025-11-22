@@ -10,6 +10,7 @@ export async function POST(request: Request) {
     const card = await Card.create(body);
     return NextResponse.json(card, { status: 201 });
   } catch (error) {
+    console.error('POST /api/cards failed', error);
     return NextResponse.json({ error: 'Failed to create card' }, { status: 500 });
   }
 }

@@ -16,7 +16,8 @@ export async function GET(_request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: 'Board not found' }, { status: 404 });
     }
     return NextResponse.json(board);
-  } catch (_error) {
+  } catch (error) {
+    console.error('GET /api/boards/[id] failed', error);
     return NextResponse.json({ error: 'Failed to fetch board' }, { status: 500 });
   }
 }
@@ -34,7 +35,8 @@ export async function PUT(request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: 'Board not found' }, { status: 404 });
     }
     return NextResponse.json(board);
-  } catch (_error) {
+  } catch (error) {
+    console.error('PUT /api/boards/[id] failed', error);
     return NextResponse.json({ error: 'Failed to update board' }, { status: 500 });
   }
 }
@@ -47,7 +49,8 @@ export async function DELETE(_request: Request, { params }: RouteParams) {
       return NextResponse.json({ error: 'Board not found' }, { status: 404 });
     }
     return NextResponse.json({ message: 'Board deleted successfully' });
-  } catch (_error) {
+  } catch (error) {
+    console.error('DELETE /api/boards/[id] failed', error);
     return NextResponse.json({ error: 'Failed to delete board' }, { status: 500 });
   }
 }

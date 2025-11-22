@@ -24,6 +24,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
     }
     return NextResponse.json(list);
   } catch (error) {
+    console.error('PUT /api/lists/[id] failed', error);
     return NextResponse.json({ error: 'Failed to update list' }, { status: 500 });
   }
 }
@@ -41,6 +42,7 @@ export async function DELETE(_request: Request, { params }: RouteParams) {
     }
     return NextResponse.json({ message: 'List deleted successfully' });
   } catch (error) {
+    console.error('DELETE /api/lists/[id] failed', error);
     return NextResponse.json({ error: 'Failed to delete list' }, { status: 500 });
   }
 }
